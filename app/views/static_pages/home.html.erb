@@ -1,0 +1,16 @@
+<h2>Search your Pexels collection here</h2>
+<br>
+<%= form_with url: home_path, method: :get do |f| %>
+  <%= f.label :search, "Insert collection ID" %>
+  <%= f.text_field :search %>
+<% end %>
+<br>
+<% if @collection.empty? %>
+  <p>Collection not found.</p>
+<% else %>
+  <% @collection.each do |photo| %>
+    <a href="<%= photo.url %>" target="_blank" rel="noopener noreferrer">
+      <img src="<%= photo.src["medium"] %>" alt="">
+    </a>
+  <% end %>
+<% end %>
